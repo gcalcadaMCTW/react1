@@ -1,38 +1,133 @@
-.App {
+.modal-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 20px black;
+  max-width: 20%;
+  width: 100%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul {
+  margin: 10px 0px;
+  padding: 0;
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+li {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 10px 0;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.add-button {
+  width: 100%;
+  background-color: red;
   color: white;
+  border: none;
+  padding: 10px 0;
+  margin-top: 5px;
+  margin-bottom:10px;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.button-delete,
+.button-update {
+  display: inline-block;
+  margin-left: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.checkbox {
+  transform: scale(1.9);
+  margin-right: 10px;
+}
+
+.task {
+  flex: 1;
+}
+
+.xzpto,
+.xpto {
+  width: 48%;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 0px;
+  margin-top: 5px;
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+ 
+}
+
+.xpto {
+  background-color: black;
+  
+}
+
+.xzpto {
+  background-color:CornflowerBlue; 
+}
+
+.xzpto:hover{
+  color:red;
+  text-decoration:underline;
+}
+
+.xzptoy {
+  width: 100%;
+  background-color: GREEN;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  margin-top: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.xpto:hover {
+  color: red;
+  text-decoration:underline;
+ 
+}
+.xzptoy:hover {
+  color: red;
+    text-decoration:underline;
+ 
+}
+@media (max-width: 768px) {
+  .modal {
+    padding: 10px;
+    max-width: 80%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .button-delete,
+  .button-update {
+    max-width:50;
+    font-size: 14px;
   }
 }
