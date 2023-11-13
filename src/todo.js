@@ -5,14 +5,23 @@ import TodoList from "./TodoList";
 function Todo() {
 
     const [inputValue, setInputValue] = useState('');
-    const [items, setItems] = useState(() => {
-        const savedItems = JSON.parse(localStorage.getItem('items')) || [];
-        return savedItems;
-    });
+    const [inputValue2, setInputValue2] = useState('');
+    const [items, setItems] = useState(saveit());
     const [filter, setFilter] = useState("all");
+    const [filteredItems, setFilteredItems] = useState([...items]);
+    const [editedItemId, setEditedItemId] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [sucessMessage, setSucessMessage] = useState("");
+
     const AtualizaEstadoInput = (e) => {
         setInputValue(e.target.value);
+
     };
+
+
+
+
+
 
     const Remove = (id) => {
         const updatedItems = items.filter(item => item.id !== id);
@@ -31,6 +40,12 @@ function Todo() {
         });
         setItems(updatedItems);
         localStorage.setItem('items', JSON.stringify(updatedItems));
+        setSucessMessage("Update da tarefa com sucesso !");
+        setTimeout(() => {
+            setSucessMessage("");
+        }, 5000);
+
+
     }
     const toggleCheckbox = (id) => {
         const updatedItems = items.map((item) => {
@@ -41,12 +56,8 @@ function Todo() {
             return item;
 
         });
-
         setItems(updatedItems);
-
-
         localStorage.setItem('items', JSON.stringify(updatedItems));
-
     };
 
     const JustDoIt = () => {
@@ -56,50 +67,117 @@ function Todo() {
                 name: inputValue,
                 checked: false,
             };
-
             const updatedItems = [...items, newItem];
             setItems(updatedItems);
             localStorage.setItem('items', JSON.stringify(updatedItems));
             setInputValue('');
+            setSucessMessage("Tarefa adicionada com sucesso !");
+            setTimeout(() => {
+                setSucessMessage("");
+            }, 5000);
         }
     }
-    const filterstuff = (filter) => {
-        const updatedItems = items.map(item => {
-            if (filter === "all") {
-                item.hide = false;
-            } else if (filter === "active") {
-                item.hide = item.checked;
-            } else if (filter === "completed") {
-                item.hide = !item.checked;
-            }
-            return item;
-        });
+    const filterstuff = (stuff) => {
+        let newFilteredItems = [...items];
+        if (stuff === "active") {
+            newFilteredItems = items.filter(item => !item.checked);
+        } else if (stuff === "completed") {
+            newFilteredItems = items.filter(item => item.checked);
+        } else if (stuff === "all") {
+            newFilteredItems = items;
+        }
+        setFilter(stuff);
+        setFilteredItems(newFilteredItems);
+    }
+    const editar = (id, name) => {
 
-        setFilter(filter);
-        setItems(updatedItems);
+        setEditedItemId(id);
+        const editedItem = items.filter(item => item.id === id)[0];
+        setInputValue2(editedItem ? editedItem.name : '');
+
+
+        console.log(name);
+        console.log(inputValue2);
     };
+
+    const confirmEdit = () => {
+        if (inputValue2.length > 0) {
+            const updatedItems = items.map((item) =>
+                item.id === editedItemId ? { ...item, name: inputValue2 } : item
+            );
+            setItems(updatedItems);
+            localStorage.setItem("items", JSON.stringify(updatedItems));
+            setEditedItemId(null);
+            setInputValue2('');
+        } else {
+            setErrorMessage("O campo não pode estar vazio.");
+        }
+
+
+    };
+
+
 
     return (
         <div className="modal-container">
             <div className="modal">
-                <h1> What needs to be done? </h1>
+                <h1> Lista de tarefas </h1>
                 <input className="input-field" type="text" value={inputValue} onChange={AtualizaEstadoInput} />
-                <button className="add-button" onClick={JustDoIt}>ADD</button>
+                <button className="add-button" onClick={JustDoIt}>Adicionar</button>
+
+                {editedItemId !== null && (
+                    <div>
+                        <input
+                            className="edit-input"
+                            type="text"
+                            value={inputValue2}
+                            onChange={(e) => setInputValue2(e.target.value)}
+
+                        />
+                        <button className="confirm-button" onClick={confirmEdit}>
+                            Confirmar
+                        </button>
+                        <button className="cancel-button" onClick={() => {
+                            setInputValue2('');
+                            setEditedItemId(null);
+                        }}>
+                            Cancelar
+                        </button>
+
+
+
+                    </div>
+                )}
                 <div className="btnstuff">
                     <button type="button" className="xpto" onClick={() => filterstuff("all")}>
-                        Mostra todas
+                        Todas
                     </button>
                     <button type="button" className="xzpto" onClick={() => filterstuff("active")}>
-                        Mostra Tarefas Ativas
+                        Ativas
                     </button>
                     <button type="button" className="xzptoy" onClick={() => filterstuff("completed")}>
-                        Mostra Tarefas Completas
+                        Completas
                     </button>
                 </div>
-                <TodoList items={items} Remove={Remove} updateName={updateName} toggleCheckbox={toggleCheckbox} />
+                <p>Total de Tarefas: {filter === 'all' ? items.length : filteredItems.length}</p>
+                <TodoList
+                    items={filter === 'all' ? items : filteredItems}
+                    Remove={Remove}
+                    updateName={updateName}
+                    toggleCheckbox={toggleCheckbox}
+                    editar={editar}
+                />
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {sucessMessage && <p className="sucess-message">{sucessMessage}</p>}
             </div>
+
         </div >
     );
+}
+
+function saveit() {
+    const savedItems = JSON.parse(localStorage.getItem('items')) || [];
+    return savedItems;
 }
 
 export default Todo;
