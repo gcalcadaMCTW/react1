@@ -13,20 +13,19 @@ function Todo() {
     const [errorMessage, setErrorMessage] = useState("");
     const [sucessMessage, setSucessMessage] = useState("");
 
+
     const AtualizaEstadoInput = (e) => {
         setInputValue(e.target.value);
 
     };
 
-
-
-
-
-
     const Remove = (id) => {
         const updatedItems = items.filter(item => item.id !== id);
         setItems(updatedItems);
         localStorage.setItem('items', JSON.stringify(updatedItems));
+        const mensagem = setErrorMessage;
+        mensagem("Tarefa removida com sucesso !");
+        temporizador(mensagem);
     }
 
     const updateName = (name) => {
@@ -40,10 +39,8 @@ function Todo() {
         });
         setItems(updatedItems);
         localStorage.setItem('items', JSON.stringify(updatedItems));
-        setSucessMessage("Update da tarefa com sucesso !");
-        setTimeout(() => {
-            setSucessMessage("");
-        }, 5000);
+        setInputValue("");
+
 
 
     }
@@ -71,10 +68,10 @@ function Todo() {
             setItems(updatedItems);
             localStorage.setItem('items', JSON.stringify(updatedItems));
             setInputValue('');
-            setSucessMessage("Tarefa adicionada com sucesso !");
-            setTimeout(() => {
-                setSucessMessage("");
-            }, 5000);
+            const mensagem = setSucessMessage;
+            mensagem("Tarefa adicionada com sucesso !");
+            temporizador(mensagem);
+
         }
     }
     const filterstuff = (stuff) => {
@@ -169,6 +166,7 @@ function Todo() {
                 />
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 {sucessMessage && <p className="sucess-message">{sucessMessage}</p>}
+
             </div>
 
         </div >
@@ -179,5 +177,11 @@ function saveit() {
     const savedItems = JSON.parse(localStorage.getItem('items')) || [];
     return savedItems;
 }
+
+function temporizador(mensagem) {
+    setTimeout(() => {
+        mensagem("");
+    }, 5000);
+};
 
 export default Todo;
