@@ -1,8 +1,8 @@
 import { useState } from "react";
-import TodoList from "./TodoList";
+import TodoList2 from "./TodoList2";
+import { ModalContainer, ModalContent, InputField, AddButton, ConfirmButton, CancelButton, EditInput, XptoButton, XzptoButton, XzptoyButton } from './styles';
 
-
-function Todo() {
+function Todoex2() {
 
     const [inputValue, setInputValue] = useState('');
     const [inputValue2, setInputValue2] = useState('');
@@ -116,48 +116,42 @@ function Todo() {
 
 
     return (
-        <div className="modal-container">
-            <div className="modal">
+        <ModalContainer>
+            <ModalContent>
                 <h1> Lista de tarefas </h1>
-                <input className="input-field" type="text" value={inputValue} onChange={AtualizaEstadoInput} />
-                <button className="add-button" onClick={JustDoIt}>Adicionar</button>
+                <InputField className="input-field" type="text" value={inputValue} onChange={AtualizaEstadoInput} />
+                <AddButton className="add-button" onClick={JustDoIt}>Adicionar</AddButton>
 
                 {editedItemId !== null && (
                     <div>
-                        <input
-                            className="edit-input"
-                            type="text"
-                            value={inputValue2}
-                            onChange={(e) => setInputValue2(e.target.value)}
-
-                        />
-                        <button className="confirm-button" onClick={confirmEdit}>
+                        <EditInput className="edit-input" type="text" value={inputValue2} onChange={(e) => setInputValue2(e.target.value)} />
+                        <ConfirmButton className="confirm-button" onClick={confirmEdit}>
                             Confirmar
-                        </button>
-                        <button className="cancel-button" onClick={() => {
+                        </ConfirmButton>
+                        <CancelButton className="cancel-button" onClick={() => {
                             setInputValue2('');
                             setEditedItemId(null);
                         }}>
                             Cancelar
-                        </button>
+                        </CancelButton>
 
 
 
                     </div>
                 )}
                 <div className="btnstuff">
-                    <button type="button" className="xpto" onClick={() => filterstuff("all")}>
+                    <XptoButton type="button" className="xpto" onClick={() => filterstuff("all")}>
                         Todas
-                    </button>
-                    <button type="button" className="xzpto" onClick={() => filterstuff("active")}>
+                    </XptoButton>
+                    <XzptoButton type="button" className="xzpto" onClick={() => filterstuff("active")}>
                         Ativas
-                    </button>
-                    <button type="button" className="xzptoy" onClick={() => filterstuff("completed")}>
+                    </XzptoButton>
+                    <XzptoyButton type="button" className="xzptoy" onClick={() => filterstuff("completed")}>
                         Completas
-                    </button>
+                    </XzptoyButton>
                 </div>
                 <p>Total de Tarefas: {filter === 'all' ? items.length : filteredItems.length}</p>
-                <TodoList
+                <TodoList2
                     items={filter === 'all' ? items : filteredItems}
                     Remove={Remove}
                     updateName={updateName}
@@ -167,9 +161,9 @@ function Todo() {
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 {sucessMessage && <p className="sucess-message">{sucessMessage}</p>}
 
-            </div>
+            </ModalContent>
 
-        </div >
+        </ModalContainer>
     );
 }
 
@@ -184,4 +178,4 @@ function temporizador(mensagem) {
     }, 5000);
 };
 
-export default Todo;
+export default Todoex2;
