@@ -7,7 +7,9 @@ import Todoex2 from './exercicio2/todoex2';
 import GlobalStyles from './GlobalStyles';
 
 const App = () => {
+
   const router = createBrowserRouter([
+
     {
       path: '/',
       element: <Homepage />,
@@ -20,10 +22,10 @@ const App = () => {
       path: 'exercicio2',
       element: (
 
-        <>
+        <div>
           <GlobalStyles />
           <Todoex2 />
-        </>
+        </div>
 
       ),
     }

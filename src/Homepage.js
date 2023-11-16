@@ -3,9 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Homepage() {
+
     return (
         <div>
-            <h1>Home Page</h1>
+            <h1>HomePage</h1>
             <nav>
                 <ul>
                     <li>
@@ -14,7 +15,6 @@ function Homepage() {
                     <li>
                         <Link to="exercicio2">Exercício 2</Link>
                     </li>
-
                 </ul>
             </nav>
         </div>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { StyledUl, StyledLi, EditButton, DeleteButton, UpdateButton, Checkbox, TaskSpan } from './styles';
-
+import PropTypes from 'prop-types';
 
 const TodoList2 = (props) => {
 
@@ -27,6 +27,17 @@ const TodoList2 = (props) => {
 
 
 }
+
+TodoList2.propTypes = {
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            checked: PropTypes.bool.isRequired,
+        })
+    ).isRequired,
+};
+
 
 
 
