@@ -1,0 +1,168 @@
+.modal-container {
+    position: flex;
+    width: auto;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top:10%
+  }
+  
+  .modal {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 20px black;
+    text-align: center;
+  }
+  
+  ul {
+    margin: 10px 0px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+  
+  .add-button {
+    width: 100%;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    margin-top: 5px;
+    margin-bottom:10px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  .button-edit,
+  .button-delete,
+  .button-update {
+    display: inline-block;
+    margin-left: 10px;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button-edit {
+    background-color: green;
+  }
+  .button-delete{
+    background-color: red;
+  }
+  .button-update  {
+    background-color: CornflowerBlue;
+  }
+  
+  .checkbox {
+    transform: scale(1.9);
+    margin-right: 10px;
+  }
+  
+  .task {
+    flex: 1;
+  }
+  
+  .xzpto,
+  .xpto,
+  .xzptoy {
+    width: 31%;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    margin-top: 5px;
+    margin-right: 2%;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  
+  .xpto {
+    background-color: black;
+    
+  }
+  
+  .xzpto {
+    background-color:CornflowerBlue; 
+  }
+  
+  .xzpto:hover{
+    color:white;
+    text-decoration:underline;
+  }
+  
+  .xpto:hover {
+    color: white;
+    text-decoration:underline;
+   
+  }
+  .xzptoy:hover {
+    color: white;
+      text-decoration:underline;
+   
+  }
+  .error-message {
+    background-color: red; 
+    color: white; 
+    border-radius: 5px;
+  
+  }
+  .sucess-message {
+    background-color: green; 
+    color: white; 
+    border-radius: 5px;
+  }
+  .info-message {
+    background-color: CornflowerBlue; 
+    color: white; 
+    border-radius: 5px;
+  }
+  
+  .edit-input {
+    width: auto;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .confirm-button,
+  .cancel-button {
+    width: auto;
+    padding: 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .confirm-button {
+    background-color: CornflowerBlue; 
+    color: white;
+  }
+  
+  .cancel-button {
+    background-color: red;
+    color: white;
+  }
+  
+  
+    
+  

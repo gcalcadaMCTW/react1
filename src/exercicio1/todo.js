@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoList from "./TodoList";
-
+import './Styles.css';
 function Todo() {
 
     const [inputValue, setInputValue] = useState('');
@@ -12,6 +12,9 @@ function Todo() {
     const [errorMessage, setErrorMessage] = useState("");
     const [sucessMessage, setSucessMessage] = useState("");
 
+    useEffect(() => {
+        document.title = `Exercicio1`;
+    },);
 
     const AtualizaEstadoInput = (e) => {
         setInputValue(e.target.value);

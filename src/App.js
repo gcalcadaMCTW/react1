@@ -1,9 +1,9 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Homepage from './Homepage';
 import Todo from './exercicio1/todo';
 import Todoex2 from './exercicio2/todoex2';
+import Bank from './exercicio3/bank';
 import GlobalStyles from './GlobalStyles';
 
 const App = () => {
@@ -13,12 +13,14 @@ const App = () => {
     {
       path: '/',
       element: <Homepage />,
+
     },
     {
       path: 'exercicio1',
       element: <Todo />,
     },
     {
+
       path: 'exercicio2',
       element: (
 
@@ -28,15 +30,13 @@ const App = () => {
         </div>
 
       ),
-    }
+    },
+    {
+      path: 'exercicio3',
+      element: <Bank />,
+    },
   ]);
-
-  createRoot(document.getElementById('root')).render(
-
-
-    <RouterProvider router={router} />
-
-  );
+  return <RouterProvider router={router} />;
 };
 
 

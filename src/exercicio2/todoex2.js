@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoList2 from "./TodoList2";
 import { ModalContainer, ModalContent, InputField, AddButton, ConfirmButton, CancelButton, EditInput, XptoButton, XzptoButton, XzptoyButton } from './styles';
 
@@ -12,6 +12,11 @@ function Todoex2() {
     const [editedItemId, setEditedItemId] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     const [sucessMessage, setSucessMessage] = useState("");
+
+
+    useEffect(() => {
+        document.title = `Total:.${filter === 'all' ? items.length : filteredItems.length}`;
+    },);
 
 
     const AtualizaEstadoInput = (e) => {

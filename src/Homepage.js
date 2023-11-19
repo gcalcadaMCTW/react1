@@ -1,8 +1,8 @@
-// Homepage.js
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 function Homepage() {
+
 
     return (
         <div>
@@ -14,6 +14,9 @@ function Homepage() {
                     </li>
                     <li>
                         <Link to="exercicio2">Exercício 2</Link>
+                    </li>
+                    <li>
+                        <Link to="exercicio3">Exercício 3</Link>
                     </li>
                 </ul>
             </nav>
