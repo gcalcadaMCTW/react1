@@ -1,8 +1,8 @@
-#TODO LIST
+# TODO LIST
 
 This repository contains a simple TODO list organized into different tasks. Each task includes options to add, edit, remove, and update the task. The tasks are categorized into groups, and you can perform various actions on each task within a category.
 
-##Task Categories:
+## Task Categories:
 1. Add Tasks:
 Add new tasks to the list.
 2. Edit Tasks:
